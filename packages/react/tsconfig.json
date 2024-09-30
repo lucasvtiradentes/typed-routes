@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "lib": ["DOM", "ES2022", "DOM.Iterable"],
+    "target": "es6", // ou superior
+    "module": "NodeNext", // Certifique-se de usar 'esnext' para ESModules
+    "jsx": "react-jsx",
     "skipLibCheck": true,
-    "noUncheckedIndexedAccess": true,
-    "noEmit": true
+    "strict": true,
+    "noUncheckedIndexedAccess": true
   }
 }

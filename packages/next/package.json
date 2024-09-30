@@ -10,7 +10,19 @@
     "typecheck": "tsc --noEmit",
     "package_check": "npm publish --dry-run"
   },
+  "dependencies": {
+    "@typed-routes/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": "^13.0.0 || ^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
   "devDependencies": {
+    "@types/react": "^18.2.66",
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "tsup": "^8.3.0",
     "typescript": "^5.5.3"
   }

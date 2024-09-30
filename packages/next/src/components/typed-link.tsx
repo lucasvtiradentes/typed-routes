@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { ComponentProps } from 'react';
 
-import { AvailableRoutes } from '../routes';
+import { AvailableRoutes } from '..';
+
 import { getUpdatedProps, ModifiedRouterDomComponent } from '../utils/utils';
 
 type LinkProps = Omit<ComponentProps<typeof Link>, 'href'>;

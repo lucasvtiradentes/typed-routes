@@ -1,8 +1,8 @@
-import { BlogFilters } from '@/app/(pages)/blog/page-with-params';
-import { PersonNickname } from '@/features/people';
-import { ArticleSlug } from '@/_content/all_articles';
+import { RouteShape } from '@typed-routes/core';
 
-import { RouteShape } from './type';
+type ArticleSlug = 'a-slug' | 'another-slug' | 'yet-another-slug';
+type PersonNickname = 'john-doe' | 'jane-doe';
+type BlogFilters = { tag?: string; author?: PersonNickname };
 
 export const staticRoutes = [
   { label: 'Início', href: '/' },
@@ -22,8 +22,3 @@ export const dynamicRoutes = [
   { label: 'Artigo', href: '/blog/:slug_title', params: {} as { slug_title: ArticleSlug } },
   { label: 'Pessoa', href: '/personal/people/:nickname', params: {} as { nickname: PersonNickname } }
 ] as const satisfies RouteShape[];
-
-export const allRoutes = [...staticRoutes, ...dynamicRoutes] satisfies RouteShape[];
-
-export type AllRoutes = typeof allRoutes;
-export type AvailableRoutes = AllRoutes[number]['href'];

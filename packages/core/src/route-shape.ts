@@ -1,4 +1,4 @@
-import { IntentionalAny } from '@lucasvtiradentes/types';
+import { IntentionalAny } from './types';
 
 export type RouteShape = {
   label: string;
