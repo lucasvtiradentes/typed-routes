@@ -1,9 +1,20 @@
+import { ReactNode } from 'react';
+
 import { IntentionalAny } from './types';
 
-export type RouteShape = {
-  label: string;
+type CommonProps = {
   href: string;
   params?: IntentionalAny;
   searchParams?: IntentionalAny;
-  hidden?: boolean;
 };
+
+type NextRouteShape = CommonProps & {
+  label: string;
+};
+
+type ReactRouteShape = CommonProps & {
+  path: string;
+  element: ReactNode;
+};
+
+export type RouteShape = NextRouteShape | ReactRouteShape;

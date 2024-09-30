@@ -6,7 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup ./src/index.ts --clean --dts --format cjs,esm",
+    "build": "tsup ./src/index.tsx --clean --dts --format cjs,esm",
     "typecheck": "tsc --noEmit",
     "package_check": "npm publish --dry-run"
   },

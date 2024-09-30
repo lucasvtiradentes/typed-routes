@@ -1,7 +1,8 @@
 import { ComponentProps } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AvailableRoutes } from '../app-router';
+import { AvailableRoutes } from '..';
+
 import { getUpdatedProps, ModifiedRouterDomComponent } from '../utils/modified-dom-element-utils';
 
 type LinkProps = Omit<ComponentProps<typeof Link>, 'to'>;

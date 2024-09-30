@@ -1,7 +1,8 @@
 import { ComponentProps } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { AvailableRoutes } from '../app-router';
+import { AvailableRoutes } from '..';
+
 import { getUpdatedProps, ModifiedRouterDomComponent } from '../utils/modified-dom-element-utils';
 
 type NavigateProps = Omit<ComponentProps<typeof Navigate>, 'to'>;
