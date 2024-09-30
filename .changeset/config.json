@@ -3,7 +3,7 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [["core", "react", "next"]],
+  "linked": [["@typed-routes/core", "@typed-routes/react", "@typed-routes/next"]],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
