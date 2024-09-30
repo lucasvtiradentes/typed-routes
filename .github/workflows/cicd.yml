@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  packages: write
   pull-requests: write
 
 jobs:
@@ -37,15 +36,11 @@ jobs:
     - name: 05 - Build application
       run: pnpm build
 
-    # - name: 06 - Creating .npmrc
-    #   run: |
-    #       echo "@lucasvtiradentes:registry=https://npm.pkg.github.com" >> .npmrc
-    #       echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-
-    # - name: 07 - Create Release Pull Request or Publish to npm
-    #   id: changesets
-    #   uses: changesets/action@v1
-    #   with:
-    #     publish: pnpm publish:publish
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: 06 - Create Release Pull Request or Publish to npm
+      id: changesets
+      uses: changesets/action@v1
+      with:
+        publish: pnpm publish:publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

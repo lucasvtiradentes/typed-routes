@@ -3,10 +3,9 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [],
-  "access": "restricted",
+  "linked": [["core", "react", "next"]],
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["react-test", "next-test"],
-  "registry": "https://npm.pkg.github.com"
+  "ignore": ["react-test", "next-test"]
 }
