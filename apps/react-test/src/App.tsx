@@ -1,8 +1,5 @@
-function App() {
-  return <div>teste</div>;
-}
+import { AppRouter } from './routing/router';
 
-export default App;
-
-// import { appRouter, appRoutes } from './example';
-// export const AppRouter = () => <RouterProvider router={createBrowserRouter(appRouter)} />;
+export const App = () => {
+  return <AppRouter />;
+};

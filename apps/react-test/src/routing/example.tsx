@@ -1,9 +1,11 @@
+import { ReactRouteShape } from '@typed-routes/react';
 import { PropsWithChildren } from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
-import { ReactRouteShape } from '@typed-routes/react';
+
+import { AboutPage } from '../pages/about';
+import { HomePage } from '../pages/home';
 
 const Layout = ({ children }: PropsWithChildren) => <div>{children}</div>;
-const Page = () => <div>Page</div>;
 
 // =============================================================================
 
@@ -13,49 +15,51 @@ const privateRoutes = [
   {
     href: `${privateBaseRoute}/dashboard`,
     path: 'dashboard',
-    element: <Page />
+    element: <AboutPage />,
+    params: {} as { color: string; title: string }
   },
   {
     href: `${privateBaseRoute}/finances/transactions`,
     path: 'finances/transactions',
-    element: <Page />
+    element: <AboutPage />,
+    searchParams: {} as { date: string }
   },
   {
     href: `${privateBaseRoute}/finances/credit-card-transactions`,
     path: 'finances/credit-card-transactions',
-    element: <Page />
+    element: <AboutPage />
   },
   {
     href: `${privateBaseRoute}/finances/accounts`,
     path: 'finances/accounts',
-    element: <Page />
+    element: <AboutPage />
   },
   {
     href: `${privateBaseRoute}/finances/import-rules`,
     path: 'finances/import-rules',
-    element: <Page />
+    element: <AboutPage />
   },
   {
     href: `${privateBaseRoute}/finances/credit-cards`,
     path: 'finances/credit-cards',
-    element: <Page />
+    element: <AboutPage />
   },
   {
     href: `${privateBaseRoute}/finances/categories`,
     path: 'finances/categories',
-    element: <Page />
+    element: <AboutPage />
   }
 ] as const satisfies ReactRouteShape[];
 
 // =============================================================================
 
-const authBaseRoute = `/` as const;
+const authBaseRoute = `` as const;
 
 const authRoutes = [
   {
     href: `${authBaseRoute}`,
     path: authBaseRoute,
-    element: <Page />
+    element: <HomePage />
   }
 ] as const satisfies ReactRouteShape[];
 
@@ -63,7 +67,7 @@ const logoutRoute = [
   {
     href: `${authBaseRoute}/logout`,
     path: `${authBaseRoute}/logout`,
-    element: <Page />
+    element: <AboutPage />
   }
 ] as const satisfies ReactRouteShape[];
 
@@ -72,7 +76,7 @@ const logoutRoute = [
 export const appRouter = [
   {
     path: authBaseRoute,
-    ErrorBoundary: Page,
+    ErrorBoundary: AboutPage,
     element: (
       <Layout>
         <Outlet />
@@ -82,7 +86,7 @@ export const appRouter = [
   },
   {
     path: privateBaseRoute,
-    ErrorBoundary: Page,
+    ErrorBoundary: AboutPage,
     element: (
       <Layout>
         <Outlet />
@@ -93,7 +97,7 @@ export const appRouter = [
   ...logoutRoute,
   {
     path: '/*',
-    element: <Page />
+    element: <AboutPage />
   }
 ] as const satisfies RouteObject[];
 
