@@ -1,4 +1,4 @@
-import { RouteShape } from '@typed-routes/core';
+import { NextRouteShape } from '@typed-routes/next';
 
 type ArticleSlug = 'a-slug' | 'another-slug' | 'yet-another-slug';
 type PersonNickname = 'john-doe' | 'jane-doe';
@@ -14,11 +14,11 @@ export const staticRoutes = [
   { label: 'Projetos', href: '/tech/projects' },
   { label: 'Setup', href: '/tech/setup' },
   { label: 'Esse site', href: '/tech/this-site' },
-  { label: 'Estatísticas', href: '/adm/stats', hidden: true },
+  { label: 'Estatísticas', href: '/adm/stats' },
   { label: 'Palavras', href: '/words' }
-] as const satisfies RouteShape[];
+] as const satisfies NextRouteShape[];
 
 export const dynamicRoutes = [
   { label: 'Artigo', href: '/blog/:slug_title', params: {} as { slug_title: ArticleSlug } },
   { label: 'Pessoa', href: '/personal/people/:nickname', params: {} as { nickname: PersonNickname } }
-] as const satisfies RouteShape[];
+] as const satisfies NextRouteShape[];

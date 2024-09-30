@@ -1,10 +1,6 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RouteShape } from '@typed-routes/core';
+import { ReactRouteShape } from '@typed-routes/core';
+export type { ReactRouteShape } from '@typed-routes/core';
 
-import { appRouter, appRoutes } from './example';
-
-const allRoutes = appRoutes satisfies RouteShape[];
+const allRoutes = [] satisfies ReactRouteShape[];
 export type AllRoutes = typeof allRoutes;
 export type AvailableRoutes = AllRoutes[number]['href'];
-
-export const AppRouter = () => <RouterProvider router={createBrowserRouter(appRouter)} />;

@@ -8,13 +8,13 @@ type CommonProps = {
   searchParams?: IntentionalAny;
 };
 
-type NextRouteShape = CommonProps & {
+export type NextRouteShape = CommonProps & {
   label: string;
 };
 
-type ReactRouteShape = CommonProps & {
+export type ReactRouteShape = CommonProps & {
   path: string;
   element: ReactNode;
 };
 
-export type RouteShape = NextRouteShape | ReactRouteShape;
+// export type RouteShape = NextRouteShape | ReactRouteShape;

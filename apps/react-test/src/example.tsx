@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
-import { RouteShape } from '@typed-routes/core';
+import { ReactRouteShape } from '@typed-routes/react';
 
 const Layout = ({ children }: PropsWithChildren) => <div>{children}</div>;
 const Page = () => <div>Page</div>;
@@ -45,7 +45,7 @@ const privateRoutes = [
     path: 'finances/categories',
     element: <Page />
   }
-] as const satisfies RouteShape[];
+] as const satisfies ReactRouteShape[];
 
 // =============================================================================
 
@@ -57,7 +57,7 @@ const authRoutes = [
     path: authBaseRoute,
     element: <Page />
   }
-] as const satisfies RouteShape[];
+] as const satisfies ReactRouteShape[];
 
 const logoutRoute = [
   {
@@ -65,7 +65,7 @@ const logoutRoute = [
     path: `${authBaseRoute}/logout`,
     element: <Page />
   }
-] as const satisfies RouteShape[];
+] as const satisfies ReactRouteShape[];
 
 // =============================================================================
 
@@ -97,4 +97,4 @@ export const appRouter = [
   }
 ] as const satisfies RouteObject[];
 
-export const appRoutes = [...authRoutes, ...logoutRoute, ...privateRoutes] satisfies RouteShape[];
+export const appRoutes = [...authRoutes, ...logoutRoute, ...privateRoutes] satisfies ReactRouteShape[];
