@@ -1,7 +1,6 @@
 import { BetterOmit, ObjectHelper } from '@typed-routes/core';
 
-import { AvailableRoutes } from '..';
-
+import { AvailableRoutes } from '../types';
 import { parseRoute, ParseRouteProps } from './route-parser';
 
 export type ModifiedRouterDomComponent<TDomComponentProps, TCurRoute extends AvailableRoutes> = TDomComponentProps & {

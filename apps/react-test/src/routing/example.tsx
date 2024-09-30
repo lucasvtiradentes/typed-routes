@@ -49,7 +49,7 @@ const privateRoutes = [
     path: 'finances/categories',
     element: <AboutPage />
   }
-] as const satisfies ReactRouteShape[];
+] as const satisfies Array<ReactRouteShape>;
 
 // =============================================================================
 
@@ -61,7 +61,7 @@ const authRoutes = [
     path: authBaseRoute,
     element: <HomePage />
   }
-] as const satisfies ReactRouteShape[];
+] as const satisfies Array<ReactRouteShape>;
 
 const logoutRoute = [
   {
@@ -69,7 +69,7 @@ const logoutRoute = [
     path: `${authBaseRoute}/logout`,
     element: <AboutPage />
   }
-] as const satisfies ReactRouteShape[];
+] as const satisfies Array<ReactRouteShape>;
 
 // =============================================================================
 
@@ -101,4 +101,4 @@ export const appRouter = [
   }
 ] as const satisfies RouteObject[];
 
-export const appRoutes = [...authRoutes, ...logoutRoute, ...privateRoutes] satisfies ReactRouteShape[];
+export const appRoutes = [...authRoutes, ...logoutRoute, ...privateRoutes] satisfies ReadonlyArray<ReactRouteShape>;

@@ -16,9 +16,9 @@ export const staticRoutes = [
   { label: 'Esse site', href: '/tech/this-site' },
   { label: 'Estatísticas', href: '/adm/stats' },
   { label: 'Palavras', href: '/words' }
-] as const satisfies NextRouteShape[];
+] as const satisfies ReadonlyArray<NextRouteShape>;
 
 export const dynamicRoutes = [
   { label: 'Artigo', href: '/blog/:slug_title', params: {} as { slug_title: ArticleSlug } },
   { label: 'Pessoa', href: '/personal/people/:nickname', params: {} as { nickname: PersonNickname } }
-] as const satisfies NextRouteShape[];
+] as const satisfies ReadonlyArray<NextRouteShape>;
