@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { NavigateOptions, useNavigate } from 'react-router-dom';
 
-import { AvailableRoutes } from '..';
-
+import { AvailableRoutes } from '../parsed-routes';
 import { parseLink, ParseLinkProps } from '../utils/parse-link';
 
 export const useTypedNavigate = () => {

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { ComponentProps } from 'react';
 
-import { AvailableRoutes } from '../types';
-import { parseProps, ModifiedRouterDomComponent } from '../utils/parse-props';
+import { AvailableRoutes } from '../parsed-routes';
+import { ModifiedRouterDomComponent, parseProps } from '../utils/parse-props';
 
 type LinkProps = Omit<ComponentProps<typeof Link>, 'href'>;
 

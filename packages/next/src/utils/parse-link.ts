@@ -1,6 +1,6 @@
 import { IntentionalAny } from '@typed-routes/core';
 
-import { AllRoutes, AvailableRoutes } from '../types';
+import { AllRoutes, AvailableRoutes } from '../parsed-routes';
 
 type StaticRoutes = Exclude<AllRoutes[number], { params: IntentionalAny }>;
 type DynamicRoutes = Extract<AllRoutes[number], { params: IntentionalAny }>;
