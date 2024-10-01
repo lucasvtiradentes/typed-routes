@@ -1,13 +1,15 @@
 import { TypedLink } from '@typed-routes/next';
+import Link from 'next/link';
 import React from 'react';
 
 function Page() {
   return (
     <>
-      <div>teste</div>
-      <TypedLink href="/personal/people" />
-      <TypedLink href="/blog/:slug_title" params={{ slug_title: 'yet-another-slug' }} />
-      <TypedLink href="/personal/people/:nickname" params={{ nickname: 'john-doe' }} />
+      <Link href="/blog/yet-another-slug">default no type-safe next component</Link>
+
+      <TypedLink href="/blog/:slug_title" params={{ slug_title: 'another-slug' }}>
+        typed no type-safe next component
+      </TypedLink>
     </>
   );
 }
