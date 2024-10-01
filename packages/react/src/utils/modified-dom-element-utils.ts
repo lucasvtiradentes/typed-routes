@@ -12,7 +12,7 @@ export const getUpdatedProps = <TCurRoute extends AvailableRoutes, TDomComponent
   props: ModifiedRouterDomComponent<TDomComponentProps, TCurRoute>
 ) => {
   const toParsed = parseRoute({
-    path: props.to,
+    to: props.to,
     searchParams: props.searchParams,
     ...('params' in props && { params: props.params })
   } as unknown as ParseRouteProps<TCurRoute>);

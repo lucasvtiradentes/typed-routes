@@ -1,9 +1,5 @@
-import { NextRouteShape } from '@typed-routes/core';
-export type { NextRouteShape } from '@typed-routes/core';
-
-// export const allRoutes = [] satisfies NextRouteShape[];
-// export type AllRoutes = typeof allRoutes;
-// export type AvailableRoutes = AllRoutes[number]['href'];
+import { NextRouteShape } from './route-shape';
+export type { NextRouteShape };
 
 export interface Register {
   // allRoutes: NextRouteShape[]

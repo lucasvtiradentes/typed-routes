@@ -1,5 +1,5 @@
-import { ReactRouteShape } from '@typed-routes/core';
-export type { ReactRouteShape } from '@typed-routes/core';
+import { ReactRouteShape } from './route-shape';
+export type { ReactRouteShape };
 
 export interface Register {
   // allRoutes: ReactRouteShape[]

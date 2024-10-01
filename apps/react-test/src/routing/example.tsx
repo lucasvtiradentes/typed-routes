@@ -4,6 +4,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import { AbountPageSearchParams, AboutPage } from '../pages/about';
 import { DashboardPage, DashboardPageSearchParams } from '../pages/dashboard';
 import { Layout } from '../pages/layout';
+import { HomePage } from '../pages/home';
 
 // =============================================================================
 
@@ -36,6 +37,10 @@ export const appRouter = [
       </Layout>
     ),
     children: privateRoutes
+  },
+  {
+    path: '/',
+    element: <HomePage />
   },
   {
     path: '/*',
