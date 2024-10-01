@@ -1,5 +1,11 @@
 # @typed-routes/core
 
+## 0.0.4
+
+### Patch Changes
+
+- 3d2ddaf: expose parse link util
+
 ## 0.0.3
 
 ### Patch Changes
