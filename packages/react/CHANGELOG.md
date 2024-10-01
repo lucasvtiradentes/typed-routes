@@ -1,5 +1,13 @@
 # @typed-routes/react
 
+## 0.0.3
+
+### Patch Changes
+
+- 61d6105: export available routes
+- Updated dependencies [61d6105]
+  - @typed-routes/core@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
