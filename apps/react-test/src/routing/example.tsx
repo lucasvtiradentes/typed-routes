@@ -1,11 +1,9 @@
 import { ReactRouteShape } from '@typed-routes/react';
-import { PropsWithChildren } from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
 
-import { AboutPage } from '../pages/about';
-import { HomePage } from '../pages/home';
-
-const Layout = ({ children }: PropsWithChildren) => <div>{children}</div>;
+import { AbountPageSearchParams, AboutPage } from '../pages/about';
+import { DashboardPage, DashboardPageSearchParams } from '../pages/dashboard';
+import { Layout } from '../pages/layout';
 
 // =============================================================================
 
@@ -15,75 +13,20 @@ const privateRoutes = [
   {
     href: `${privateBaseRoute}/dashboard`,
     path: 'dashboard',
+    element: <DashboardPage />,
+    params: {} as DashboardPageSearchParams
+  },
+  {
+    href: `${privateBaseRoute}/about`,
+    path: 'about',
     element: <AboutPage />,
-    params: {} as { color: string; title: string }
-  },
-  {
-    href: `${privateBaseRoute}/finances/transactions`,
-    path: 'finances/transactions',
-    element: <AboutPage />,
-    searchParams: {} as { date: string }
-  },
-  {
-    href: `${privateBaseRoute}/finances/credit-card-transactions`,
-    path: 'finances/credit-card-transactions',
-    element: <AboutPage />
-  },
-  {
-    href: `${privateBaseRoute}/finances/accounts`,
-    path: 'finances/accounts',
-    element: <AboutPage />
-  },
-  {
-    href: `${privateBaseRoute}/finances/import-rules`,
-    path: 'finances/import-rules',
-    element: <AboutPage />
-  },
-  {
-    href: `${privateBaseRoute}/finances/credit-cards`,
-    path: 'finances/credit-cards',
-    element: <AboutPage />
-  },
-  {
-    href: `${privateBaseRoute}/finances/categories`,
-    path: 'finances/categories',
-    element: <AboutPage />
-  }
-] as const satisfies Array<ReactRouteShape>;
-
-// =============================================================================
-
-const authBaseRoute = `` as const;
-
-const authRoutes = [
-  {
-    href: `${authBaseRoute}`,
-    path: authBaseRoute,
-    element: <HomePage />
-  }
-] as const satisfies Array<ReactRouteShape>;
-
-const logoutRoute = [
-  {
-    href: `${authBaseRoute}/logout`,
-    path: `${authBaseRoute}/logout`,
-    element: <AboutPage />
+    searchParams: {} as AbountPageSearchParams
   }
 ] as const satisfies Array<ReactRouteShape>;
 
 // =============================================================================
 
 export const appRouter = [
-  {
-    path: authBaseRoute,
-    ErrorBoundary: AboutPage,
-    element: (
-      <Layout>
-        <Outlet />
-      </Layout>
-    ),
-    children: authRoutes
-  },
   {
     path: privateBaseRoute,
     ErrorBoundary: AboutPage,
@@ -94,11 +37,10 @@ export const appRouter = [
     ),
     children: privateRoutes
   },
-  ...logoutRoute,
   {
     path: '/*',
     element: <AboutPage />
   }
 ] as const satisfies RouteObject[];
 
-export const appRoutes = [...authRoutes, ...logoutRoute, ...privateRoutes] satisfies ReadonlyArray<ReactRouteShape>;
+export const appRoutes = [...privateRoutes] satisfies ReadonlyArray<ReactRouteShape>;
