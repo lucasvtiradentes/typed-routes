@@ -17,7 +17,7 @@
 
 ## :trumpet: Overview
 
-<div align="center">this is a scoped-package that allows you to define typed routes in React and Next.js applications, ensuring more safety and autocomplete support during the development process.</div><br />
+<div align="center">a package that allows you to define typed routes in React and Next.js applications, ensuring more safety and autocomplete support during the development process.</div><br />
 
 <div align="center">
   <img width="80%" src="./.github/images/demo.png">
