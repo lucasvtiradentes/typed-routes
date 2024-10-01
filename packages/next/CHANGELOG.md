@@ -1,5 +1,13 @@
 # @typed-routes/next
 
+## 0.0.5
+
+### Patch Changes
+
+- 4691d72: update exports names
+- Updated dependencies [4691d72]
+  - @typed-routes/core@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes
