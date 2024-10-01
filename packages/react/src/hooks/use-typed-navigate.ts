@@ -3,14 +3,14 @@ import { NavigateOptions, useNavigate } from 'react-router-dom';
 
 import { AvailableRoutes } from '..';
 
-import { parseRoute, ParseRouteProps } from '../utils/route-parser';
+import { parseLink, ParseLinkProps } from '../utils/parse-link';
 
 export const useTypedNavigate = () => {
   const navigate = useNavigate();
 
   const typedNavigate = useCallback(
-    <TCurRoute extends AvailableRoutes>(toProps: ParseRouteProps<TCurRoute>, options?: NavigateOptions) => {
-      const to = parseRoute(toProps);
+    <TCurRoute extends AvailableRoutes>(toProps: ParseLinkProps<TCurRoute>, options?: NavigateOptions) => {
+      const to = parseLink(toProps);
       navigate(to, options);
     },
     [navigate]

@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom';
 
 import { AvailableRoutes } from '..';
 
-import { getUpdatedProps, ModifiedRouterDomComponent } from '../utils/modified-dom-element-utils';
+import { parseProps, ModifiedRouterDomComponent } from '../utils/parse-props';
 
 type NavigateProps = Omit<ComponentProps<typeof Navigate>, 'to'>;
 
 export const TypedNavigate = <TCurRoute extends AvailableRoutes>(props: ModifiedRouterDomComponent<NavigateProps, TCurRoute>) => {
-  const updatedProps = getUpdatedProps(props);
-  return <Navigate {...updatedProps} />;
+  const parsedProps = parseProps(props);
+  return <Navigate {...parsedProps} />;
 };

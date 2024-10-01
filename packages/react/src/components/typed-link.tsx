@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { AvailableRoutes } from '..';
 
-import { getUpdatedProps, ModifiedRouterDomComponent } from '../utils/modified-dom-element-utils';
+import { parseProps, ModifiedRouterDomComponent } from '../utils/parse-props';
 
 type LinkProps = Omit<ComponentProps<typeof Link>, 'to'>;
 
 export const TypedLink = <TCurRoute extends AvailableRoutes>(props: ModifiedRouterDomComponent<LinkProps, TCurRoute>) => {
-  const updatedProps = getUpdatedProps(props);
-  return <Link {...updatedProps} />;
+  const parsedProps = parseProps(props);
+  return <Link {...parsedProps} />;
 };

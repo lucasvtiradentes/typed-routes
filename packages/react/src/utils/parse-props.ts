@@ -2,20 +2,20 @@ import { BetterOmit, ObjectHelper } from '@typed-routes/core';
 
 import { AvailableRoutes } from '..';
 
-import { parseRoute, ParseRouteProps } from './route-parser';
+import { parseLink, ParseLinkProps } from './parse-link';
 
 export type ModifiedRouterDomComponent<TDomComponentProps, TCurRoute extends AvailableRoutes> = TDomComponentProps & {
   to: TCurRoute;
-} & BetterOmit<ParseRouteProps<TCurRoute>, 'path'>;
+} & BetterOmit<ParseLinkProps<TCurRoute>, 'path'>;
 
-export const getUpdatedProps = <TCurRoute extends AvailableRoutes, TDomComponentProps>(
+export const parseProps = <TCurRoute extends AvailableRoutes, TDomComponentProps>(
   props: ModifiedRouterDomComponent<TDomComponentProps, TCurRoute>
 ) => {
-  const toParsed = parseRoute({
+  const toParsed = parseLink({
     to: props.to,
     searchParams: props.searchParams,
     ...('params' in props && { params: props.params })
-  } as unknown as ParseRouteProps<TCurRoute>);
+  } as unknown as ParseLinkProps<TCurRoute>);
   const originalElementProps = ObjectHelper.omitObjectKeys(props, ['searchParams', 'params'] as (keyof TDomComponentProps)[]);
 
   const updatedProps = {
