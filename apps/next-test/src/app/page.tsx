@@ -7,6 +7,7 @@ function Page() {
       <div>teste</div>
       <TypedLink href="/personal/people" />
       <TypedLink href="/blog/:slug_title" params={{ slug_title: 'yet-another-slug' }} />
+      <TypedLink href="/personal/people/:nickname" params={{ nickname: 'john-doe' }} />
     </>
   );
 }
