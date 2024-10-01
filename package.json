@@ -11,7 +11,9 @@
     "hook:commit": "npx --no -- commitlint --edit",
     "hook:staged": "npx --no-install lint-staged",
     "hook:pre-push": "npm run build",
-    "publish:init": "npx changeset"
+    "publish:init": "npx changeset",
+    "publish:publish": "npx changeset publish"
+
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.8",
