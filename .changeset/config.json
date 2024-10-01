@@ -3,9 +3,10 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [["@typed-routes/core", "@typed-routes/react", "@typed-routes/next"]],
+  "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
+  "privatePackages": false,
   "ignore": ["react-test", "next-test"]
 }
