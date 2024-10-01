@@ -22,3 +22,5 @@ export const dynamicRoutes = [
   { label: 'Artigo', href: '/blog/:slug_title', params: {} as { slug_title: ArticleSlug } },
   { label: 'Pessoa', href: '/personal/people/:nickname', params: {} as { nickname: PersonNickname } }
 ] as const satisfies ReadonlyArray<NextRouteShape>;
+
+export const appRoutes = [...staticRoutes, ...dynamicRoutes] as const satisfies ReadonlyArray<NextRouteShape>;

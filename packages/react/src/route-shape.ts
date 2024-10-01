@@ -1,7 +1,4 @@
 import { CommonRouteProps } from '@typed-routes/core';
-import { ReactNode } from 'react';
+import { RouteObject } from 'react-router-dom';
 
-export type ReactRouteShape = CommonRouteProps & {
-  path: string;
-  element: ReactNode;
-};
+export type ReactRouteShape = CommonRouteProps & RouteObject;

@@ -10,7 +10,7 @@
 </div>
 
 <p align="center">
-  <a href="#dart-features">Features</a> • <a href="#warning-requirements">Requirements</a> • <a href="#bulb-usage">Usage</a> • <a href="#wrench-development">Development</a> • <a href="#books-about">About</a>
+  <a href="#dart-features">Features</a> • <a href="#bulb-usage">Usage</a> • <a href="#wrench-development">Development</a>
 </p>
 
 <a href="#"><img src="./.github/images/divider.png" /></a>
@@ -23,34 +23,33 @@
   <img width="80%" src="./.github/images/demo.png">
 </div>
 
+## :question: Motivation
+
+My primary motivation for developing this tool was to ensure that I can have type-safe routing in both React and Next.js applications default choices with minimum effort. That means, even though I know there is [@tanstack/router](https://tanstack.com/router/latest), it is simpler to just use a light package instead of change my entire codebase to use it.
+
 ## :dart: Features <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
-&nbsp;&nbsp;&nbsp;✔️ Define routes with strict typing;<br>
-&nbsp;&nbsp;&nbsp;✔️ Supports both [React](./apps/react-test) and [Next.js](./apps/next-test);<br>
-&nbsp;&nbsp;&nbsp;✔️ Boosts productivity with route autocompletion;<br>
-&nbsp;&nbsp;&nbsp;✔️ Integrates with popular routing libraries.<br>
-
-## :warning: Requirements <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
-
-- Node.js >= 14
-- React >= 17
-- Next.js >= 12 (if using Next.js)
+&nbsp;&nbsp;&nbsp;✔️ Navegate through routes with strict typing and autocompletion;<br>
+&nbsp;&nbsp;&nbsp;✔️ Supports both React and Next.js, you can check the [examples folder](./examples/);<br>
+&nbsp;&nbsp;&nbsp;✔️ Provides ready-to-use type-safe custom components and hooks (Link, NavLink, Navigate, useNavigate).<br>
 
 ## :bulb: Usage <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
 By following these steps, you can ensure type-safe routing in both **React** and **Next.js** using your custom `@typed-routes` package.
 
-### **Usage on React**
-
-1. Install the package
+<div align="center">
+<details>
+  <summary>How to use it on React?</summary>
+  <div align="left">
+    <br>
+    <div>1. Install the package</div><br />
 
 ```bash
 npm install @typed-routes/react
 ```
 
-2. Define your routes in a `routes-config.tsx` file.
-
-This file defines the route shapes and configuration for the application. It combines static and dynamic routes for better route management.
+  <div>2. Define your routes in a `routes-config.tsx` file.</div><br />
+  <div>This file defines the route shapes and configuration for the application. It combines static and dynamic routes for better route management.</div>
 
 ```tsx
 // routes-config.tsx
@@ -102,9 +101,8 @@ export const appRouter = [
 export const appRoutes = [...privateRoutes] satisfies ReadonlyArray<ReactRouteShape>;
 ```
 
-3. Set up your router in `router.tsx` using `createBrowserRouter` from `react-router-dom`.
-
-This file sets up the router for a React app using `react-router-dom`.
+  <div>3. Set up your router in `router.tsx` using `createBrowserRouter` from `react-router-dom`.</div>
+  <div>This file sets up the router for a React app using `react-router-dom`.</div>
 
 ```tsx
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -119,47 +117,45 @@ declare module '@typed-routes/react' {
 }
 ```
 
-4. Use the type-safe components instead of the default ones.
-
-This is an example of how to use typed routes with `TypedLink` and `useTypedNavigate` for safe navigation and linking in React.
+<div>4. Use the type safe componentes instead of the default ones.</div>
 
 ```tsx
-import { TypedLink, useTypedNavigate } from '@typed-routes/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { TypedLink } from '@typed-routes/next';
+import Link from 'next/link';
 
-export const HomePage = () => {
-  const { typedNavigate } = useTypedNavigate();
-
-  const handleNavigate = () => {
-    typedNavigate({ href: '/app/about', searchParams: { date: '' } }, {});
-  };
-
+function Page() {
   return (
-    <div>
-      <button onClick={handleNavigate}>Go to About Page</button>
-      <TypedLink href="/app/about" searchParams={{}}>
-        Typed About Link
+    <>
+      <TypedLink href="/blog/:slug_title" params={{ slug_title: 'another-slug' }}>
+        Typed Link to Blog
       </TypedLink>
-      <TypedLink href="/app/dashboard" params={{ color: 'red', title: 'test' }}>
-        Typed Dashboard Link
-      </TypedLink>
-      <span>Welcome to Home Page</span>
-    </div>
+    </>
   );
-};
+}
+
+export default Page;
 ```
 
-### **Usage on Next.js**
+  </div>
+</details>
+</div>
 
-1. Install the package
+<br />
+
+<div align="center">
+<details>
+  <summary>How to use it on Next.js?</summary>
+  <div align="left">
+    <br>
+
+<div>1. Install the package</div><br />
 
 ```bash
 npm install @typed-routes/next
 ```
 
-2. Define static and dynamic routes in `routes-config.ts`.
-
-This file defines the static and dynamic routes for your Next.js app using the `NextRouteShape` type.
+<div>2. Define static and dynamic routes in `routes-config.ts`.</div><br />
+<div>This file defines the static and dynamic routes for your Next.js app using the `NextRouteShape` type.</div>
 
 ```ts
 import { NextRouteShape } from '@typed-routes/next';
@@ -190,9 +186,9 @@ export const dynamicRoutes = [
 ] as const satisfies ReadonlyArray<NextRouteShape>;
 ```
 
-3. Combine and register them in a `routing.ts` for type-safe route navigation.
+<div>3. Combine and register them in a `routing.ts` for type-safe route navigation.</div><br />
 
-This file combines the static and dynamic routes and registers them for use in the typed routes system.
+<div>This file combines the static and dynamic routes and registers them for use in the typed routes system.</div>
 
 ```ts
 import { NextRouteShape } from '@typed-routes/next';
@@ -207,7 +203,7 @@ declare module '@typed-routes/next' {
 }
 ```
 
-4. Use the type safe componentes instead of the default ones.
+<div>4. Use the type safe componentes instead of the default ones.</div>
 
 ```tsx
 import { TypedLink } from '@typed-routes/next';
@@ -225,6 +221,10 @@ function Page() {
 
 export default Page;
 ```
+
+  </div>
+</details>
+</div>
 
 ## :wrench: Development <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
@@ -247,15 +247,6 @@ To contribute:
    ```bash
    npm run dev
    ```
-
-4. Run the tests:
-   ```bash
-   npm test
-   ```
-
-## :books: License
-
-This project is distributed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 <a href="#"><img src="./.github/images/divider.png" /></a>
 

@@ -3,13 +3,13 @@
 .github/
 .husky/
 .vscode/
-dist/
-node_modules/
-ignore/
-# src/
+
+**/dist/
+**/node_modules/
+**/ignore/
+**/.next/
 
 # FILES ========================================================================
 
 pnpm-lock.yaml
-package.json
-**/*.mdx
+**/package.json
