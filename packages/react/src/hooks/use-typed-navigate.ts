@@ -7,6 +7,7 @@ import { parseRoute, ParseRouteProps } from '../utils/route-parser';
 
 export const useTypedNavigate = () => {
   const navigate = useNavigate();
+
   const typedNavigate = useCallback(
     <TCurRoute extends AvailableRoutes>(toProps: ParseRouteProps<TCurRoute>, options?: NavigateOptions) => {
       const to = parseRoute(toProps);

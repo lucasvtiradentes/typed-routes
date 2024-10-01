@@ -5,17 +5,17 @@ import { AllRoutes, AvailableRoutes } from '..';
 type StaticRoutes = Exclude<AllRoutes[number], { params: IntentionalAny }>;
 type DynamicRoutes = Extract<AllRoutes[number], { params: IntentionalAny }>;
 
-type ExtractSearchParams<TCurRoute, TSource> = Extract<TSource, { finalPath: TCurRoute; searchParams: IntentionalAny }>['searchParams'] extends never
+type ExtractSearchParams<TCurRoute, TSource> = Extract<TSource, { href: TCurRoute; searchParams: IntentionalAny }>['searchParams'] extends never
   ? { searchParams?: never }
   : {
-      searchParams: Partial<Extract<TSource, { finalPath: TCurRoute; searchParams: IntentionalAny }>['searchParams']>;
+      searchParams: Partial<Extract<TSource, { href: TCurRoute; searchParams: IntentionalAny }>['searchParams']>;
     };
 
 export type ParseRouteProps<TCurRoute extends AvailableRoutes> = {
   path: TCurRoute;
-} & (TCurRoute extends DynamicRoutes['finalPath']
+} & (TCurRoute extends DynamicRoutes['href']
   ? ExtractSearchParams<TCurRoute, DynamicRoutes> & {
-      params: Extract<DynamicRoutes, { finalPath: TCurRoute; params: IntentionalAny }>['params'];
+      params: Extract<DynamicRoutes, { href: TCurRoute; params: IntentionalAny }>['params'];
     }
   : ExtractSearchParams<TCurRoute, StaticRoutes>);
 
