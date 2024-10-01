@@ -6,7 +6,7 @@ export const HomePage = () => {
   const navigate = useNavigate();
 
   const handleTeste = () => {
-    typedNavigate({ path: '/app/about', searchParams: { date: '' } }, {});
+    typedNavigate({ href: '/app/about', searchParams: { date: '' } }, {});
     navigate('/app/about', {});
   };
 

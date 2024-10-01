@@ -6,7 +6,7 @@ import { parseLink, ParseLinkProps } from './parse-link';
 
 export type ModifiedRouterDomComponent<TDomComponentProps, TCurRoute extends AvailableRoutes> = TDomComponentProps & {
   to: TCurRoute;
-} & BetterOmit<ParseLinkProps<TCurRoute>, 'path'>;
+} & BetterOmit<ParseLinkProps<TCurRoute>, 'href'>;
 
 export const parseProps = <TCurRoute extends AvailableRoutes, TDomComponentProps>(
   props: ModifiedRouterDomComponent<TDomComponentProps, TCurRoute>

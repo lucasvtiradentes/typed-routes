@@ -12,7 +12,7 @@ type ExtractSearchParams<TCurRoute, TSource> = Extract<TSource, { href: TCurRout
     };
 
 export type ParseLinkProps<TCurRoute extends AvailableRoutes> = {
-  path: TCurRoute;
+  href: TCurRoute;
 } & (TCurRoute extends DynamicRoutes['href']
   ? ExtractSearchParams<TCurRoute, DynamicRoutes> & {
       params: Extract<DynamicRoutes, { href: TCurRoute; params: IntentionalAny }>['params'];
@@ -22,7 +22,7 @@ export type ParseLinkProps<TCurRoute extends AvailableRoutes> = {
 // =============================================================================
 
 export const parseLink = <TCurRoute extends AvailableRoutes>(props: ParseLinkProps<TCurRoute>) => {
-  let result: string = props.path;
+  let result: string = props.href;
 
   if ('params' in props && typeof props.params === 'object' && props.params !== null) {
     Object.entries(props.params).forEach(([key, value]) => (result = result.replace(`:${key}`, String(value))));
