@@ -1,5 +1,16 @@
 # @typed-routes/react
 
+## 0.1.0
+
+### Minor Changes
+
+- 598e853: fix changeset publish error
+
+### Patch Changes
+
+- Updated dependencies [598e853]
+  - @typed-routes/core@0.1.0
+
 ## 0.0.5
 
 ### Patch Changes
