@@ -1,5 +1,11 @@
 # @typed-routes/core
 
+## 0.0.5
+
+### Patch Changes
+
+- 4691d72: update exports names
+
 ## 0.0.4
 
 ### Patch Changes
