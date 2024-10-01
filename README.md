@@ -35,8 +35,6 @@ My primary motivation for developing this tool was to ensure that I can have typ
 
 ## :bulb: Usage <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
-By following these steps, you can ensure type-safe routing in both **React** and **Next.js** using your custom `@typed-routes` package.
-
 <div align="center">
 <details>
   <summary>How to use it on React?</summary>
@@ -52,7 +50,6 @@ npm install @typed-routes/react
   <div>This file defines the route shapes and configuration for the application. It combines static and dynamic routes for better route management.</div>
 
 ```tsx
-// routes-config.tsx
 import { ReactRouteShape } from '@typed-routes/react';
 import { Outlet, RouteObject } from 'react-router-dom';
 import { AboutPage, AboutPageSearchParams } from '../pages/about';
@@ -101,14 +98,11 @@ export const appRouter = [
 export const appRoutes = [...privateRoutes] satisfies ReadonlyArray<ReactRouteShape>;
 ```
 
-  <div>3. Set up your router in `router.tsx` using `createBrowserRouter` from `react-router-dom`.</div>
+  <div>3. Set up your router in `setup-autocompletion.tsx`.</div><br />
   <div>This file sets up the router for a React app using `react-router-dom`.</div>
 
 ```tsx
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { appRouter, appRoutes } from './routes-config';
-
-export const AppRouter = () => <RouterProvider router={createBrowserRouter(appRouter)} />;
+import { appRoutes } from './routes-config';
 
 declare module '@typed-routes/react' {
   interface Register {
@@ -117,19 +111,26 @@ declare module '@typed-routes/react' {
 }
 ```
 
-<div>4. Use the type safe componentes instead of the default ones.</div>
+<div>4. Make sure to create a `router-provider.tsx` to import in your root component.</div><br />
 
 ```tsx
-import { TypedLink } from '@typed-routes/next';
-import Link from 'next/link';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { appRouter } from './router-configs';
+
+export const AppRouter = () => <RouterProvider router={createBrowserRouter(appRouter)} />;
+```
+
+<div>5. Use the type safe componentes instead of the default ones.</div><br />
+
+```tsx
+import { TypedLink } from '@typed-routes/react';
 
 function Page() {
   return (
-    <>
-      <TypedLink href="/blog/:slug_title" params={{ slug_title: 'another-slug' }}>
-        Typed Link to Blog
-      </TypedLink>
-    </>
+    <TypedLink href="/app/dashboard" params={{ color: 'red', title: 'test' }}>
+      Dashboard
+    </TypedLink>
   );
 }
 
@@ -154,7 +155,7 @@ export default Page;
 npm install @typed-routes/next
 ```
 
-<div>2. Define static and dynamic routes in `routes-config.ts`.</div><br />
+<div>2. Define static and dynamic routes in `route-configs.ts`.</div><br />
 <div>This file defines the static and dynamic routes for your Next.js app using the `NextRouteShape` type.</div>
 
 ```ts
@@ -164,7 +165,6 @@ type ArticleSlug = 'a-slug' | 'another-slug' | 'yet-another-slug';
 type PersonNickname = 'john-doe' | 'jane-doe';
 type BlogFilters = { tag?: string; author?: PersonNickname };
 
-// Define static routes
 export const staticRoutes = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/blog', searchParams: {} as BlogFilters },
@@ -179,22 +179,21 @@ export const staticRoutes = [
   { label: 'Words', href: '/words' }
 ] as const satisfies ReadonlyArray<NextRouteShape>;
 
-// Define dynamic routes
 export const dynamicRoutes = [
   { label: 'Article', href: '/blog/:slug_title', params: { slug_title: 'a-slug' as ArticleSlug } },
   { label: 'Person', href: '/personal/people/:nickname', params: { nickname: 'john-doe' as PersonNickname } }
 ] as const satisfies ReadonlyArray<NextRouteShape>;
+
+export const appRoutes = [...staticRoutes, ...dynamicRoutes] as const satisfies ReadonlyArray<NextRouteShape>;
 ```
 
-<div>3. Combine and register them in a `routing.ts` for type-safe route navigation.</div><br />
+<div>3. Combine and register them in a `setup-autocompletion.ts` for type-safe route navigation.</div><br />
 
-<div>This file combines the static and dynamic routes and registers them for use in the typed routes system.</div>
+<div>This file registers the routes for use in the typed routes system.</div>
 
 ```ts
 import { NextRouteShape } from '@typed-routes/next';
-import { staticRoutes, dynamicRoutes } from './routes-config';
-
-const appRoutes = [...staticRoutes, ...dynamicRoutes] as const satisfies ReadonlyArray<NextRouteShape>;
+import { appRoutes } from './route-configs';
 
 declare module '@typed-routes/next' {
   interface Register {
@@ -203,19 +202,16 @@ declare module '@typed-routes/next' {
 }
 ```
 
-<div>4. Use the type safe componentes instead of the default ones.</div>
+<div>4. Use the type safe componentes instead of the default ones.</div><br />
 
 ```tsx
 import { TypedLink } from '@typed-routes/next';
-import Link from 'next/link';
 
 function Page() {
   return (
-    <>
-      <TypedLink href="/blog/:slug_title" params={{ slug_title: 'another-slug' }}>
-        Typed Link to Blog
-      </TypedLink>
-    </>
+    <TypedLink href="/blog/:slug_title" params={{ slug_title: 'another-slug' }}>
+      Typed Link to Blog
+    </TypedLink>
   );
 }
 
