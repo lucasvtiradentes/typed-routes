@@ -5,3 +5,5 @@ export * from './components/typed-navigate';
 export * from './hooks/use-typed-navigate';
 
 export * from './types';
+
+export { AvailableRoutes } from './parsed-routes';

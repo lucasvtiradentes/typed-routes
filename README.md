@@ -25,10 +25,10 @@
 
 ## :dart: Features <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
-&nbsp;&nbsp;&nbsp;✔️ Define routes with strict typing;
-&nbsp;&nbsp;&nbsp;✔️ Supports both [React](./apps/react-test) and [Next.js](./apps/next-test);
-&nbsp;&nbsp;&nbsp;✔️ Boosts productivity with route autocompletion;
-&nbsp;&nbsp;&nbsp;✔️ Integrates with popular routing libraries.
+&nbsp;&nbsp;&nbsp;✔️ Define routes with strict typing;<br>
+&nbsp;&nbsp;&nbsp;✔️ Supports both [React](./apps/react-test) and [Next.js](./apps/next-test);<br>
+&nbsp;&nbsp;&nbsp;✔️ Boosts productivity with route autocompletion;<br>
+&nbsp;&nbsp;&nbsp;✔️ Integrates with popular routing libraries.<br>
 
 ## :warning: Requirements <a href="#TOC"><img align="right" src="./.github/images/up_arrow.png" width="22"></a>
 
