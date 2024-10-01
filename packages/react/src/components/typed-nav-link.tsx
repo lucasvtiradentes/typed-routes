@@ -8,6 +8,6 @@ import { parseProps, ModifiedRouterDomComponent } from '../utils/parse-props';
 type NavLinkProps = Omit<ComponentProps<typeof NavLink>, 'to'>;
 
 export const TypedNavLink = <TCurRoute extends AvailableRoutes>(props: ModifiedRouterDomComponent<NavLinkProps, TCurRoute>) => {
-  const parsedProps = parseProps(props);
-  return <NavLink {...parsedProps} />;
+  const { href, ...parsedProps } = parseProps(props);
+  return <NavLink to={href} {...parsedProps} />;
 };
